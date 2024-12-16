@@ -1,0 +1,29 @@
+version: "3.9"
+
+services:
+  api:
+    build:
+      context: .
+    ports:
+      - "8000:8000"
+    networks:
+      - default
+    volumes:
+      - ./prod_model:/app/prod_model
+    environment:
+      - MODEL_PATH=/app/prod_model/model.pth
+
+  client:
+    build:
+      context: ./client  # Directory containing client files
+    ports:
+      - "5050:5000"
+    depends_on:
+      - api
+    networks:
+      - default
+    environment:
+      - API_URL=http://api:8000  # Access API via Docker network
+
+networks:
+  default:
