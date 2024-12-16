@@ -1,6 +1,40 @@
-# ML Clothing Recognition Service
 
+# ML Clothing Recognition Service
+## LSMLS2. Final project. Kofman Anna.
+![image_classifier](https://github.com/user-attachments/assets/c1cba538-2f9e-4138-8c91-147eb70204d6)
 This repository contains an end-to-end ML service for recognizing clothing categories (dresses, t-shirts, jeans, jackets, coats, and shirts) from photos. The service uses a trained machine learning model deployed with a FastAPI backend and a client application for user interaction.
+
+## Overview
+
+This project focuses on building a machine learning service for recognizing clothing categories based on images. Here's an outline of our workflow:
+
+1. **Dataset Preparation**:
+   - We scraped the dataset from [zalando.ch](https://www.zalando.ch), gathering 1,000 images for each of the following categories:
+     - Dresses
+     - T-shirts
+     - Jeans
+     - Jackets
+     - Coats
+     - Shirts
+   - *1_zalando_dataset_get_pages.ipynb* and *2_zalando_dataset_get_images.ipynb* were used for data scraping. 
+   - The dataset was cleaned and labeled for training purposes with *3_prepare_dataset.ipynb*.
+   - Due to the GitHub constraints, it's impossible to upload the dataset in this repository. You can upload the prepared dataset from Google Drive using this link: https://drive.google.com/file/d/1IMmKOuUBQqBzMN76NHuC4KFjj-a7IYf2/view?usp=sharing or call *4_upload_dataset.ipynb* script.
+
+2. **Model Training**:
+   - *5_LSML2_Final_Project_Kofman_Anna_model_trainer.ipynb* script trained two different models on the dataset:
+     - **ResNet34**: Achieved an accuracy of 75.40% on the test set.
+     - **ViT (Vision Transformer)**: Achieved an accuracy of 81.60% on the test set.
+   - After evaluating the models, the **ViT model** was selected due to its superior performance.
+   - Due to the GitHub constraints, it's impossible to upload the trained model in this repository. You can upload the trained model using this link: https://drive.google.com/drive/folders/1qAkUL4Q0dmuzKyS3FrdChe-dCqh91Pjn?usp=sharing and put it to a service/ direction. 
+
+3. **Experiment Tracking**:
+   - We used [Neptune.ai](https://neptune.ai/) for tracking model experiments and results.
+   - The best-performing model (ViT) was exported and uploaded to the `service/prod_model` directory for production use.
+
+4. **Service Deployment**:
+   - The trained model is served using a **FastAPI** backend.
+   - The service is containerized using **Docker** and orchestrated with **Docker Compose**.
+
 
 ## Features
 - **Model**: A ViT model achieving 82.20% test set accuracy.
@@ -33,10 +67,9 @@ This repository contains an end-to-end ML service for recognizing clothing categ
    ```bash
    docker-compose up --build
    ```
-3. Access the FastAPI Swagger UI at:
-   ```bash
-   http://127.0.0.1:8000/docs
-   ```
+3. Access the Service:
+   - **API**: Open a browser or use tools like `curl` or Postman to interact with the API at [http://localhost:8000/docs](http://localhost:8000/docs).
+   - **Client**: Access the client application at [http://localhost:5050](http://localhost:5050).
 
 ### Directory Structure
 ```
@@ -71,8 +104,14 @@ This repository contains an end-to-end ML service for recognizing clothing categ
 
 ## Future Improvements
 - Improve model accuracy with additional training.
-- Add more clothing categories.
+- Collect bigger dataset.
+- Expose the service for searching the most similar product from Zalando based on uploaded photo.
 - Enhance client application design.
 - Set up monitoring and logging for live deployment.
+
+## UI Secreenshots
+<img width="1367" alt="Screenshot 2024-12-14 at 22 51 31" src="https://github.com/user-attachments/assets/fc2b6b5f-f532-4870-9554-dd8265fb6404" />
+<img width="1400" alt="Screenshot 2024-12-14 at 22 50 57" src="https://github.com/user-attachments/assets/ad4933ff-a826-412c-9a77-6ae1f15bdd34" />
+
 
 ---
