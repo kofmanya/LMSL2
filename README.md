@@ -1,6 +1,6 @@
 
 # ML Image Classifier
-## LSMLS2. Final project. Kofman Anna.
+## LSML2. Final project. Kofman Anna.
 ![image_classifier](https://github.com/user-attachments/assets/c1cba538-2f9e-4138-8c91-147eb70204d6)
 This repository contains an end-to-end ML service for recognizing clothing categories (dresses, t-shirts, jeans, jackets, coats, and shirts) from photos. The service uses a trained machine learning model deployed with a FastAPI backend and a client application for user interaction.
 
