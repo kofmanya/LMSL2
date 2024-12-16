@@ -105,8 +105,7 @@ This project delivers a machine learning service for image-based clothing classi
 │   │       ├── index.html                 # Main client HTML page
 │   ├── prod_model/                        # Directory for production-ready model
 │   │   └── ... (model files)
-│   ├── requirements.txt                   # Python dependencies for the backend
-├── __pycache__/                           # Python cache files
+│   ├── requirements.txt                   # Python dependencies for the backend 
 └── README.md                              # Project documentation
 ```
 
