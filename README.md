@@ -6,53 +6,59 @@ This repository contains an end-to-end ML service for recognizing clothing categ
 
 ## Overview
 
-This project focuses on building a machine learning service for recognizing clothing categories based on images. Here's an outline of our workflow:
+This project delivers a machine learning service for image-based clothing classification. The development workflow includes the following steps:
 
 1. **Dataset Preparation**:
-   - We scraped the dataset from [zalando.ch](https://www.zalando.ch), gathering 1,000 images for each of the following categories:
+   - The dataset was scraped from [zalando.ch](https://www.zalando.ch), comprising 1,000 images for each category:
      - Dresses
      - T-shirts
      - Jeans
      - Jackets
      - Coats
      - Shirts
-   - *1_zalando_dataset_get_pages.ipynb* and *2_zalando_dataset_get_images.ipynb* were used for data scraping. 
-   - The dataset was cleaned and labeled for training purposes with *3_prepare_dataset.ipynb*.
-   - Due to the GitHub constraints, it's impossible to upload the dataset in this repository. You can upload the prepared dataset from Google Drive using this link: https://drive.google.com/file/d/1IMmKOuUBQqBzMN76NHuC4KFjj-a7IYf2/view?usp=sharing or call *4_upload_dataset.ipynb* script.
+   - Scripts `1_zalando_dataset_get_pages.ipynb` and `2_zalando_dataset_get_images.ipynb` were used to scrape the dataset, followed by cleaning and labeling through `3_prepare_dataset.ipynb`.
+   - Due to GitHub's file size restrictions, the dataset is not included in this repository. The prepared dataset can be downloaded from [Google Drive](https://drive.google.com/file/d/1IMmKOuUBQqBzMN76NHuC4KFjj-a7IYf2/view?usp=sharing) or fetched using the `4_upload_dataset.ipynb` script.
 
 2. **Model Training**:
-   - *5_LSML2_Final_Project_Kofman_Anna_model_trainer.ipynb* script trained two different models on the dataset:
-     - **ResNet34**: Achieved an accuracy of 75.40% on the test set.
-     - **ViT (Vision Transformer)**: Achieved an accuracy of 81.60% on the test set.
-   - After evaluating the models, the **ViT model** was selected due to its superior performance.
-   - Due to the GitHub constraints, it's impossible to upload the trained model in this repository. You can upload the trained model using this link: https://drive.google.com/drive/folders/1qAkUL4Q0dmuzKyS3FrdChe-dCqh91Pjn?usp=sharing and put it to a service/ direction. 
+   - The `5_LSML2_Final_Project_Kofman_Anna_model_trainer.ipynb` script trained two models:
+     - **ResNet34**: Test set accuracy of 75.40%.
+     - **ViT (Vision Transformer)**: Test set accuracy of 81.60%.
+   - The ViT model was selected for deployment due to its higher accuracy.
+   - The trained model is not included in this repository due to size constraints. It can be downloaded from [Google Drive](https://drive.google.com/drive/folders/1qAkUL4Q0dmuzKyS3FrdChe-dCqh91Pjn?usp=sharing) and placed in the `service/prod_model` directory.
 
 3. **Experiment Tracking**:
-   - We used [Neptune.ai](https://neptune.ai/) for tracking model experiments and results.
-   - The best-performing model (ViT) was exported and uploaded to the `service/prod_model` directory for production use.
+   - Model training and evaluation were tracked using [Neptune.ai](https://neptune.ai/).
+   - The best-performing ViT model was exported for deployment.
 
 4. **Service Deployment**:
-   - The trained model is served using a **FastAPI** backend.
-   - The service is containerized using **Docker** and orchestrated with **Docker Compose**.
+   - The service leverages a **FastAPI** backend and is containerized using **Docker** and **Docker Compose** for easy deployment.
 
+---
 
 ## Features
-- **Model**: A ViT model achieving 82.20% test set accuracy.
-- **API**: A FastAPI-based service to accept image uploads and return predictions.
-- **Client**: A web-based interface or bot for user interaction.
+
+- **Model**: ViT model with 81.60% test set accuracy.
+- **API**: FastAPI-based service for receiving image uploads and returning predictions.
+- **Client**: Web-based interface for user interaction.
 - **Deployment**: Docker Compose setup for seamless deployment.
-- **Experiment Tracking**: Neptune integration for tracking model performance.
-- **MLOps**: Full pipeline for serving and monitoring ML models.
+- **Experiment Tracking**: Integration with Neptune.ai for logging and monitoring model performance.
+- **MLOps**: A complete ML pipeline for serving and monitoring the deployed model.
+
+---
 
 ## Architecture
-- **Backend**: FastAPI handles requests and runs the trained ML model for inference.
-- **Frontend/Client**: Interface for uploading images and receiving predictions.
-- **Docker Compose**: Simplified deployment of both backend and client services.
-- **Experiment Tracking**: Logs and metrics tracked using Neptune.
+
+- **Backend**: FastAPI processes incoming requests and performs model inference.
+- **Frontend/Client**: A web application for uploading images and viewing predictions.
+- **Docker Compose**: Orchestrates the backend and client services.
+- **Experiment Tracking**: Logs and metrics are recorded using Neptune.ai.
+
+---
 
 ## Setup Instructions
 
 ### Prerequisites
+
 - Docker
 - Docker Compose
 - Python 3.9+
