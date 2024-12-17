@@ -29,6 +29,10 @@ This project delivers a machine learning service for image-based clothing classi
 3. **Experiment Tracking**:
    - Model training and evaluation were tracked using [Neptune.ai](https://neptune.ai/).
    - The best-performing ViT model was exported for deployment.
+   - Neptune.ai screenshots:
+     <img width="1685" alt="Screenshot 2024-12-17 at 14 04 52" src="https://github.com/user-attachments/assets/4353836d-076c-4a86-a952-e2f3b751f0ac" />
+     <img width="1683" alt="Screenshot 2024-12-17 at 14 05 52" src="https://github.com/user-attachments/assets/2a18de39-39dc-460f-91dd-fd8e02a06f80" />
+     <img width="1048" alt="Screenshot 2024-12-17 at 14 06 33" src="https://github.com/user-attachments/assets/76d61d6e-df61-412b-9644-1823f32cf0f6" />
 
 4. **Service Deployment**:
    - The service leverages a **FastAPI** backend and is containerized using **Docker** and **Docker Compose** for easy deployment.
